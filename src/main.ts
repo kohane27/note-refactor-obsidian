@@ -151,7 +151,7 @@ export default class NoteRefactor extends Plugin {
     const filePath = await this.obsFile.createOrAppendFile(fileName, '');
 
     if (this.settings.refactoredNoteTemplate !== undefined && this.settings.refactoredNoteTemplate !== '') {
-      const link = await this.app.fileManager.generateMarkdownLink(mdView.file, '', '', '');
+      const link = await this.NRDoc.markdownLink(mdView.file.path);
       const newNoteLink = await this.NRDoc.markdownLink(filePath);
       note = this.NRDoc.templatedContent(note, this.settings.refactoredNoteTemplate, mdView.file.basename, link, fileName, newNoteLink, '', note);
     }
@@ -172,7 +172,7 @@ export default class NoteRefactor extends Plugin {
     const filePath = await this.obsFile.createOrAppendFile(fileName, '');
 
     if (this.settings.refactoredNoteTemplate !== undefined && this.settings.refactoredNoteTemplate !== '') {
-      const link = await this.app.fileManager.generateMarkdownLink(mdView.file, '', '', '');
+      const link = await this.NRDoc.markdownLink(mdView.file.path);
       const newNoteLink = await this.NRDoc.markdownLink(filePath);
       note = this.NRDoc.templatedContent(note, this.settings.refactoredNoteTemplate, mdView.file.basename, link, fileName, newNoteLink, '', note);
     }

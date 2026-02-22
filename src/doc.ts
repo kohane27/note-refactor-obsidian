@@ -45,8 +45,8 @@ export default class NRDoc {
 
     async markdownLink(filePath: string){
       const file = await this.vault.getMarkdownFiles().filter(f => f.path === filePath)[0];
-      const link = await this.fileManager.generateMarkdownLink(file, '', '', '');
-      return link;
+      if (!file) return '';
+      return `[[${file.basename}]]`;
     }
 
     templatedContent(input: string, template: string, currentNoteTitle: string, currentNoteLink: string, newNoteTitle: string, newNoteLink: string, newNotePath: string, newNoteContent: string): string {
